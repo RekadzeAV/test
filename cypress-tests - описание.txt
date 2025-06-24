@@ -1,0 +1,45 @@
+1. Инициализация проекта
+Создайте папку и перейдите в неё:
+mkdir cypress-tests
+cd cypress-tests
+Copy
+Инициализируйте npm и установите Cypress:
+
+npm init -y
+npm install cypress --save-dev
+Copy
+Создайте файл cypress.json с базовой конфигурацией:
+
+{
+  "baseUrl": "https://dev2.getinfo.radugi.net",
+  "viewportWidth": 1280,
+  "viewportHeight": 720
+}
+
+Тест 1: Авторизация — успешный вход cypress/integration/auth.spec.js
+Тест 2: Форма восстановления пароля cypress/integration/password_recovery.spec.js
+Тест 3: Доступность страницы "Компания" после авторизации cypress/integration/company_access.spec.js
+Тест 4: Проверка, что текущий пользователь совпадает с руководителем cypress/integration/user_verification.spec.js
+
+3. Файл package.json
+Обновите package.json, чтобы добавить скрипт запуска Cypress:
+{
+  "name": "cypress-tests",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "^12.0.0"
+  }
+}
+
+Запуск тестов
+Установите Cypress:
+npm install
+
+Запустите Cypress в режиме открытия:
+npm run test
+
+или запустите тесты в headless-режиме:
+npx cypress run
