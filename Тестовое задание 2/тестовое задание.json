@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "76716ea2-1520-4b05-add9-fe219e81c967",
+		"name": "https://lawyer.softwarecenter.ru",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Создание клиента",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"birth_date\": \"1980-07-01\",\r\n    \"comment\": \"6123\",\r\n    \"email\": \"312@mail.ru\",\r\n    \"name\": \"Юрий Олов\",\r\n    \"phone\": \"+79856235465\",\r\n    \"telegram\": \"@Tenzo\",\r\n    \"type\": \"individual\",\r\n    \"whats_app\": \"5312\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.ameassistant.ru/api/v1/customer",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ameassistant",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v1",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание органа рассмотрения",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"authority\": \"Обсласной суд\",\r\n    \"cabinet\": \"305\",\r\n    \"comment\": \"предварительное заседание\",\r\n    \"is_main\": true,\r\n    \"judge\": \"Юрова Н.С.\",\r\n    \"lawsuit_id\": 132,\r\n    \"lawsuit_number\": \"165\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.ameassistant.ru/api/v1/authority",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ameassistant",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v1",
+						"authority"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Редактирование органа рассмотрения",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"authority\": \"Обсласной суд\",\r\n    \"cabinet\": \"305\",\r\n    \"comment\": \"предварительное заседание перенесено в кабинет 304\",\r\n    \"is_main\": true,\r\n    \"judge\": \"Юрова Н.С.\",\r\n    \"lawsuit_id\": 132,\r\n    \"lawsuit_number\": \"135\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.ameassistant.ru/api/v1/authority/132",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ameassistant",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v1",
+						"authority",
+						"132"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "редактирование клиента, смена типа лица",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 181,\r\n    \"type\": \"legal\",\r\n    \"name\": \"Коняхин Владимир Иванович\",\r\n    \"supervisor_name\": \"Коняхин Владимир Иванович\",\r\n    \"supervisor_phone\": \"+77777777777\",\r\n    \"comment\": null,\r\n    \"last_active_at\": \"2025-03-10T09:48:50.000000Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.ameassistant.ru/api/v1/customer/181",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ameassistant",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v1",
+						"customer",
+						"181"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение времени работы",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"start_working_time\": \"08:30\",\r\n    \"end_working_time\": \"19:30\",\r\n    \"working_time_interval\": 30\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.ameassistant.ru/api/v1/user/work-day",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ameassistant",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"work-day"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5hbWVhc3Npc3RhbnQucnUvYXBpL3YxL2F1dGgvbG9naW4vY29tcGxldGUiLCJpYXQiOjE3NTE1MzU3NDMsImV4cCI6MzY0MzY5NTc0MywibmJmIjoxNzUxNTM1NzQzLCJqdGkiOiJHdlJpNlFrckVqQUljOWphIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ZUhcOzE1OofwXmorcK_oIR-pDVWrBOCiqxlbSOJa_9Y",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
